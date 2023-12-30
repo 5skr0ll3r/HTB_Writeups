@@ -12,7 +12,7 @@ Found open
 HTTP Service on port 80 is unreachable so i tried to access
 the service running on 55555 to see if it's a website and success.
 The services hosted is an http request inspector
-![/web of 55555](/screenshots/home-page-req-bask.png)
+![/web of 55555](screenshots/home-page-req-bask.png)
 
 ## Research
 Before trying anything else i saw at that the footer contains 
