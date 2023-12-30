@@ -33,12 +33,12 @@ peek
 
 The service running on port 80 is Powered by Maltrail (v0.53) 
 which after searching has [Unauthenticated OS Command Injection Maltrail <= v0.54 (Did not recieve a CVE)](https://huntr.com/bounties/be3c5204-fbd9-448d-b97c-96a8d2941e87/)
-After locating a [POC](https://github.com/spookier/Maltrail-v0.53-Exploit) written in python
+After locating a [POC](https://github.com/spookier/Maltrail-v0.53-Exploit) written in python,
 i only took the curl_cmd function cause in order to get rce i have 
-to chain the two vulnerabilities i found and i only want the data 
+to chain the two vulnerabilities i found, i only want the data 
 porivided by the function to use as url parameters,
 in a sense this is trial and error cause i don't actualy 
-know if the service can take the data as url parameters
+know if the service accepts the data as url parameters
 so this was done blindly but let's attempt it
 
 ```py
