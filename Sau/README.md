@@ -2,7 +2,8 @@
 
 ## Enumeration(nmap):
 Initial: `nmap -vv -sS -oN nmap/init -A 10.129.30.180`
-Found open 
+Found open :
+
 	- 22 ssh
 	- 80 http
 	- 55555 unknown
