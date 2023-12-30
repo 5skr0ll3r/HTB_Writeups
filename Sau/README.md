@@ -111,22 +111,11 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
 ![sudo list](screenshots/sudo.png)
-```sh
-puma@sau:/opt/maltrail$ sudo -l
-sudo -l
-Matching Defaults entries for puma on sau:
-    env_reset, mail_badpass,
-    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
-User puma may run the following commands on sau:
-    (ALL : ALL) NOPASSWD: /usr/bin/systemctl status trail.service
-puma@sau:/opt/maltrail$
-```
-
-Okay so i didn't have to do much digging the hard part is over
+Okay so i didn't have to do much digging the hard part is over,
 now when executing this command you will be prompted to an environment 
-like vim/less so the only thing i have to do is `!` execute `sh` and since
-i run the command with sudo the resulting shell will have root user privileges.
+like vim/less so the only thing i have to do is **execute->** `!` the **program->** `sh` and since
+the parrent process has root privileges by sudo, the resulting shell will have the same privileges.
 
 ![getting-root](screenshots/priv-esc.png) 
 ```sh
