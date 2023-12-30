@@ -134,6 +134,9 @@ HTB{R00t_FL4G_R3dUct3d}
 
 # Resources:
 https://github.com/darklynx/request-baskets/issues/91
+
 https://github.com/entr0pie/CVE-2023-27163/tree/main
+
 https://github.com/spookier/Maltrail-v0.53-Exploit
+
 https://huntr.com/bounties/be3c5204-fbd9-448d-b97c-96a8d2941e87/
