@@ -21,19 +21,19 @@ so i just searched to see if any public CVE's exist. I went
 to the github repo of [request baskets](https://github.com/darklynx/request-baskets)
 and straight up to the issues and sure enough a [CVE](https://github.com/entr0pie/CVE-2023-27163/tree/main) was present
 
-![issues](/screenshots/git-issues-req-bask.png)
+![issues](screenshots/git-issues-req-bask.png)
 So an SSRF vulnerability (CVE-2023-27163) is present and since i saw open port 80
 but cannot access it, i asume it blocks external ips
 or just has a whitelist so i attempt to take a sneek
 peek 
 
 ## Exploitation
-![first use of cve](/screenshots/ssrf-for-home-of-80.png)
-![home page of 80](/screenshots/local-home-page-80.png)
+![first use of cve](screenshots/ssrf-for-home-of-80.png)
+![home page of 80](screenshots/local-home-page-80.png)
 
 The service running on port 80 is Powered by Maltrail (v0.53) 
 which after searching has [Unauthenticated OS Command Injection Maltrail <= v0.54 (Did not recieve a CVE)](https://huntr.com/bounties/be3c5204-fbd9-448d-b97c-96a8d2941e87/)
-After locating a (POC)[https://github.com/spookier/Maltrail-v0.53-Exploit] written in python
+After locating a [POC](https://github.com/spookier/Maltrail-v0.53-Exploit) written in python
 i only took the curl_cmd function cause in order to get rce i have 
 to chain the two vulnerabilities i found and i only want the data 
 porivided by the function to use as url parameters,
@@ -58,17 +58,17 @@ if __name__ == "__main__":
 ```
 
 ## RCE:
-![payload generation](/screenshots/payload-gen.png)
+![payload generation](screenshots/payload-gen.png)
 
 After i generated the payload i went to [CyberChef](https://gchq.github.io/CyberChef/) and URL-Encoded it
-![payload html encoding](/screenshots/cyberchef.png)
+![payload html encoding](screenshots/cyberchef.png)
 
 Before executing the exploit i start a netcat listener on port 4444
 ```sh
 nc -l 4444
 ```
 And.....
-![rce](/screenshots/rce.png)
+![rce](screenshots/rce.png)
 
 
 Now i'm able to execute command on the remote machine 
@@ -102,14 +102,15 @@ $
 In order to enumerate and attempt to escalate my privileges
 i first want to have a full tty shell
 
-## [Full TTY:](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys)
+## Full TTY:
+[Hacktricks](https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys)
 ```sh
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 (inside the nc session) CTRL+Z;stty raw -echo; fg; ls; export SHELL=/bin/bash; export TERM=screen; stty rows 38 columns 116; reset;
 ```
 
-![sudo list](/screenshots/sudo.png)
+![sudo list](screenshots/sudo.png)
 ```sh
 puma@sau:/opt/maltrail$ sudo -l
 sudo -l
@@ -127,7 +128,7 @@ now when executing this command you will be prompted to an environment
 like vim/less so the only thing i have to do is `!` execute `sh` and since
 i run the command with sudo the resulting shell will have root user privileges.
 
-![getting-root](/screenshots/priv-esc.png) 
+![getting-root](screenshots/priv-esc.png) 
 ```sh
 # cd /root
 cd /root
